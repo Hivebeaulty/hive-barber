@@ -17,11 +17,7 @@ Ordem recomendada: **GitHub → (CI fecha a Fase 00) → Supabase → Vercel.** 
    git push -u origin main
    ```
 3. O push dispara `.github/workflows/ci.yml` (aba **Actions**). É a primeira vez que o projeto roda `npm install`, `lint`, `typecheck`, testes, `build` e `test:db` num ambiente com acesso ao npm. **Esse resultado é o que fecha (ou não) a Fase 00.** Se algo falhar, copie o log para cá e corrigimos antes de seguir.
-4. Na primeira execução bem-sucedida, o CI publica o `package-lock.json` como artefato (**Actions → a execução → Artifacts → package-lock**). Baixe, coloque na raiz do projeto e faça:
-   ```bash
-   git add package-lock.json && git commit -m "Adiciona package-lock.json" && git push
-   ```
-   Depois disso o CI passa a usar `npm ci`. Edite o workflow e acrescente `cache: npm` ao passo `setup-node`.
+4. O `package-lock.json` já foi gerado e commitado pelo próprio CI (17/10/2026); a partir daí o CI usa `npm ci` com cache.
 5. Recomendado (Settings do repositório): proteger a branch `main` exigindo o CI verde em pull requests.
 
 ## 2. Supabase

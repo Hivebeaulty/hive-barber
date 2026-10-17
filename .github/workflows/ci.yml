@@ -17,7 +17,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
-          # Quando o package-lock.json existir, acrescente aqui:  cache: npm
+          cache: npm
       - name: Instalar (npm ci se houver lockfile; senão npm install)
         id: install
         run: |

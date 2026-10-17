@@ -2,7 +2,34 @@
 
 Datas: 12 e 13/10/2026 (entrega inicial); 14/10/2026 (rodada de conclusão).
 
-**Situação: a Fase 00 NÃO está tecnicamente validada.** Tudo o que podia ser verificado sem acesso ao registry do npm foi verificado e passou. O que depende de `npm install` (lint, typecheck com tipos reais, build) está **bloqueado por rede** e consta abaixo como bloqueado, nunca como aprovado. O procedimento para fechar a fase em um ambiente autorizado está na seção 5.
+**Situação (atualizada em 17/10/2026): a Fase 00 está tecnicamente validada no CI, com duas ressalvas** (inspeção visual com as dependências definitivas e o 404 do `/admin` em produção, ver "Ainda pendente" abaixo). Até 14/10 o bloqueio era a rede do ambiente de trabalho; em 17/10 o código foi para o GitHub e o CI (GitHub Actions, com acesso ao registry) executou tudo.
+
+## 0. Atualização de 17/10/2026: resultados reais do CI
+
+Execução `CI` no commit `4d3ef58` (branch `main`), Node v22.23.3, npm 10.9.9:
+
+| Verificação | Resultado |
+| --- | --- |
+| `npm install` | **passou** (primeira vez). O CI commitou o `package-lock.json` (commit `64ab95b`, 417 pacotes) |
+| `npm run lint` | **passou** (ESLint 9.39.5, `next/core-web-vitals` + `next/typescript`) |
+| `npm run typecheck` com tipos reais | **passou** depois de uma correção (ver abaixo) |
+| `npm test` | **passou** (15 testes de domínio) |
+| `npm run build` (Next.js, produção) | **passou** (inclui `next/font` com Archivo, `Metadata`, `manifest.ts`) |
+| `test:db` em Postgres 16 descartável (runner do GitHub) | **passou** (migrações 0001 e 0002 + 2 arquivos de teste) |
+
+Primeira execução (`a4af1f9`): install e lint passaram, **typecheck falhou** (4 erros em `src/lib/supabase/server.ts`: tipos implícitos `any` em `setAll`, porque a inferência do `@supabase/ssr` 0.5.2 não alcança o callback). Corrigido com a tipagem explícita `{ name; value; options: CookieOptions }[]`.
+
+**Versões resolvidas (confirmam a seção 4):** next 15.5.28; react e react-dom 19.3.1; typescript 5.9.3; eslint 9.39.5; eslint-config-next 15.5.28; tailwindcss e @tailwindcss/postcss 4.3.3; lucide-react 0.462.0; @supabase/ssr 0.5.2; @supabase/supabase-js 2.118.0; clsx 2.1.1; @types/react 19.3.0; @types/node 22.20.5. Os riscos de compatibilidade levantados na seção 4 (TypeScript 6 e ESLint 10 locais) **não se aplicam**: o npm resolveu TypeScript 5.9 e ESLint 9. As versões exatas ficam no `package-lock.json`.
+
+**Supabase real (projeto Hive Barber):** ver B10 abaixo.
+
+**Ainda pendente:**
+1. Inspeção visual a 390 e 1280 px com as dependências definitivas (Archivo e ícones reais) em navegador: depende do deploy na Vercel.
+2. `/admin` retornando 404 em produção (`next start`/Vercel): código escrito, ainda não exercitado.
+3. Itens do proprietário: logo original, moodboard, dados reais do negócio.
+4. RLS de tabelas de negócio e PostgREST real: só na Fase 01.
+
+As seções 2 a 8 abaixo são o registro de 14/10 e continuam valendo como histórico; onde divergirem desta seção 0, vale a seção 0.
 
 ## 1. Decisão de produto desta rodada: sem SMS
 
