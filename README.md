@@ -14,7 +14,7 @@ Agendamento e gestão da **Barbearia Bolonha**: app público (PWA) para o client
 
 ```bash
 cp .env.example .env.local     # preencha as variáveis (sem credenciais reais no repositório)
-npm install                    # gera o package-lock.json: commite-o (ainda NÃO existe: o install nunca rodou com sucesso)
+npm install                    # gera o package-lock.json: commite-o (o CI o gera e commita sozinho na primeira execução em main)
 npm run dev                    # http://localhost:3000
 ```
 
