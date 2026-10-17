@@ -1,0 +1,69 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  app:
+    name: lint, tipos, testes e build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          # Quando o package-lock.json existir, acrescente aqui:  cache: npm
+      - name: Instalar (npm ci se houver lockfile; senão npm install)
+        id: install
+        run: |
+          if [ -f package-lock.json ]; then
+            echo "had_lock=true" >> "$GITHUB_OUTPUT"
+            npm ci
+          else
+            echo "had_lock=false" >> "$GITHUB_OUTPUT"
+            npm install
+          fi
+      - name: Publicar o lockfile gerado (só na primeira vez)
+        if: steps.install.outputs.had_lock == 'false'
+        uses: actions/upload-artifact@v4
+        with:
+          name: package-lock
+          path: package-lock.json
+      - run: npm ls --depth=0
+      - run: npm run lint
+      - run: npm run typecheck
+      - run: npm test
+      - name: Build de produção (o build não usa o Supabase)
+        run: npm run build
+        env:
+          NEXT_PUBLIC_APP_URL: http://localhost:3000
+
+  db:
+    name: migrações e testes SQL (Postgres descartável)
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:16
+        env:
+          POSTGRES_PASSWORD: postgres
+        ports: ["5432:5432"]
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Rodar test:db (banco criado só para o teste)
+        run: bash scripts/db-test.sh
+        env:
+          PGHOST: localhost
+          PGPORT: "5432"
+          PGUSER: postgres
+          PGPASSWORD: postgres
+          DB_TEST_NAME: bolonha_test

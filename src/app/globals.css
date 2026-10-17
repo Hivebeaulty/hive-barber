@@ -1,0 +1,176 @@
+@import "tailwindcss";
+
+/* ============================================================================
+   Bolonha App — tokens do design system (documentados em docs/DESIGN_SYSTEM.md).
+   Para uma cópia do produto para outra marca, troque as cores e fontes AQUI.
+   ============================================================================ */
+@theme {
+  /* Neutros: carvão e grafite são a base; osso e aço garantem leitura. */
+  --color-carvao: #0d0e10;
+  --color-grafite: #181b1f;
+  --color-grafite-alto: #23272d;
+  --color-linha: #2e343b;
+  --color-aco: #8c95a1;
+  --color-osso: #edeef0;
+  --color-branco: #ffffff;
+
+  /* Destaque: azul. "azul" para superfícies de ação; "azul-claro" para texto/ícone
+     sobre fundo escuro (contraste calculado em docs/DESIGN_SYSTEM.md). */
+  --color-azul: #2f5bff;
+  --color-azul-forte: #1f43d6;
+  --color-azul-claro: #7c97ff;
+  --color-azul-fundo: #101a45;
+
+  /* Madeira: referência da fachada e do salão. Só em texturas e detalhes. */
+  --color-madeira: #6d4326;
+  --color-madeira-escura: #3f2714;
+  --color-mel: #c28a55;
+
+  /* Estados */
+  --color-sucesso: #46c487;
+  --color-alerta: #e3ab3f;
+  --color-erro: #f06262;
+
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Raios: poucos e pequenos. Barbearia = linhas firmes, não bolhas. */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 14px;
+
+  --ease-navalha: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --duration-rapida: 120ms;
+  --duration-normal: 200ms;
+}
+
+:root {
+  color-scheme: dark;
+  --foco: 0 0 0 3px rgb(124 151 255 / 0.55);
+}
+
+html {
+  background-color: var(--color-carvao);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: var(--color-carvao);
+  color: var(--color-osso);
+  font-family: var(--font-sans);
+  font-optical-sizing: auto;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Foco visível e consistente para teclado. */
+:where(a, button, input, select, textarea, summary, [tabindex]):focus-visible {
+  outline: none;
+  box-shadow: var(--foco);
+  border-radius: var(--radius-sm);
+}
+
+::selection {
+  background: var(--color-azul);
+  color: var(--color-branco);
+}
+
+/* Classes de componente ficam na camada "components": utilitários do Tailwind
+   (ex.: rounded-full, text-xl) SEMPRE vencem. Sem a camada, CSS solto sobrescreve
+   utilitários — bug real encontrado na prévia (skeleton redondo virava quadrado). */
+@layer components {
+  /* Tipografia de destaque: Archivo condensada e pesada. Sentence case sempre. */
+  .display {
+    font-stretch: 72%;
+    font-weight: 800;
+    letter-spacing: -0.012em;
+    line-height: 0.95;
+    text-wrap: balance;
+  }
+
+  .titulo {
+    font-stretch: 85%;
+    font-weight: 700;
+    letter-spacing: -0.005em;
+    line-height: 1.1;
+    text-wrap: balance;
+  }
+
+  .texto-legivel {
+    max-width: 62ch;
+    text-wrap: pretty;
+  }
+
+  /* Números de agenda e dinheiro alinham em colunas. */
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ----------------------------------------------------------------------------
+     Ripado de madeira — a referência da fachada. É o único elemento "ousado" da
+     interface pública: aparece no painel de passos do agendamento e na faixa de
+     visita. Não usar em telas de trabalho (admin).
+     ---------------------------------------------------------------------------- */
+  .ripado {
+    background-color: var(--color-madeira);
+    background-image:
+      /* veios finos */
+      repeating-linear-gradient(
+        90deg,
+        rgb(255 255 255 / 0.035) 0 1px,
+        transparent 1px 7px,
+        rgb(0 0 0 / 0.05) 7px 8px,
+        transparent 8px 19px
+      ),
+      /* emendas entre as tábuas */
+      repeating-linear-gradient(
+        180deg,
+        transparent 0 63px,
+        rgb(0 0 0 / 0.45) 63px 65px,
+        rgb(255 255 255 / 0.06) 65px 66px
+      ),
+      linear-gradient(180deg, rgb(255 255 255 / 0.05), rgb(0 0 0 / 0.18));
+  }
+
+  /* Entrada única do painel de ripado (um momento orquestrado, sem efeitos soltos). */
+  @keyframes ripado-entra {
+    from {
+      clip-path: inset(0 0 100% 0);
+    }
+    to {
+      clip-path: inset(0 0 0 0);
+    }
+  }
+
+  .ripado-entra {
+    animation: ripado-entra 520ms var(--ease-navalha) both;
+  }
+
+  /* Skeleton: pulso discreto. */
+  @keyframes pulso {
+    0%,
+    100% {
+      opacity: 0.55;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  .skeleton {
+    background-color: var(--color-grafite-alto);
+    border-radius: var(--radius-sm);
+    animation: pulso 1.4s ease-in-out infinite;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
