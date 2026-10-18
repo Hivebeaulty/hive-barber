@@ -30,7 +30,7 @@ export function AdminShell({ children }: { children: ReactNode }) {
           <div role="note" className="flex items-start gap-3 border-b border-linha bg-[#33270d] px-4 py-3 text-sm text-alerta sm:px-6">
             <AlertTriangle size={18} className="mt-0.5 shrink-0" aria-hidden="true" />
             <p>
-              Estrutura sem login: nenhum dado real é exibido. O acesso protegido por perfil chega na Fase 01. Não publique
+              Estrutura sem login: nenhum dado real é exibido. O acesso protegido por perfil chega na Fase 02. Não publique
               esta área antes disso.
             </p>
           </div>

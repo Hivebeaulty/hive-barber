@@ -3,7 +3,7 @@
 // por código: decisão de produto definitiva, sem SMS (ver docs/ARCHITECTURE.md).
 //
 // Celular e fixo são reconhecidos; qual deles o agendamento exige é decisão da
-// Fase 03. Não "chutamos" o dígito 9: um número errado é pior do que pedir
+// Fase 04. Não "chutamos" o dígito 9: um número errado é pior do que pedir
 // correção, pois a barbearia ligaria para outra pessoa.
 // A regra será duplicada no banco (função SQL) e precisa ficar igual; os testes
 // em tests/phone.test.ts são a especificação executável.

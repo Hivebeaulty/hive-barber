@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function AdminLayout({ children }: { children: React.ReactNode }) {
   // Trava de segurança da Fase 00: sem login implementado, a área NÃO existe em
-  // produção. A Fase 01 troca esta checagem pela guarda de sessão e perfil.
+  // produção. A Fase 02 troca esta checagem pela guarda de sessão e perfil.
   if (!features.adminAuth && process.env.NODE_ENV === "production") notFound();
 
   return <AdminShell>{children}</AdminShell>;

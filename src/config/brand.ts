@@ -1,6 +1,7 @@
-// Identidade da marca CENTRALIZADA. Para uma cópia do produto para outra barbearia
-// (decisão: cópias independentes do repositório), este arquivo, public/brand/* e
-// os tokens em src/app/globals.css são os pontos de troca.
+// Identidade da marca CENTRALIZADA (valores da Barbearia Bolonha, o piloto).
+// ATENÇÃO: a decisão antiga de "cópias independentes do repositório" foi SUPERADA pela
+// estratégia white-label (docs/WHITE_LABEL.md): a identidade passa a vir de getShop()
+// (banco e Storage, com padrões neutros) na Fase 01. Este arquivo é transitório.
 
 export const brand = {
   name: "Barbearia Bolonha",

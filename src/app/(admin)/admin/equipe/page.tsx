@@ -7,7 +7,7 @@ export default function EquipePage() {
   return (
     <AdminPlaceholder
       title="Equipe"
-      phase="Fase 01"
+      phase="Fase 02"
       description="O cadastro de barbeiros com foto, serviços que cada um realiza e jornada individual."
       willHave={[
         "Foto, nome e perfil de acesso",

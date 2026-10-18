@@ -2,7 +2,7 @@
 //  - o cliente pode cancelar até 2 horas antes do horário agendado;
 //  - o proprietário pode cancelar administrativamente mesmo após o limite.
 //
-// Lógica PURA. A autoridade final é a RPC de cancelamento no banco (Fase 02/03),
+// Lógica PURA. A autoridade final é a RPC de cancelamento no banco (Fases 03 e 04),
 // que repete esta regra; aqui só decidimos o que mostrar e traduzimos o motivo.
 
 export const CLIENT_CANCEL_LIMIT_HOURS = 2;

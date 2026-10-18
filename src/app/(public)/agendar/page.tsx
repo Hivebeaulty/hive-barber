@@ -10,7 +10,7 @@ import { normalizeBrPhone } from "../../../domain/phone.ts";
 
 export const metadata: Metadata = { title: "Agendar horário" };
 
-// ESQUELETO do agendamento. Nenhuma etapa funciona ainda (Fase 03): a página
+// ESQUELETO do agendamento. Nenhuma etapa funciona ainda (Fase 04): a página
 // mostra o caminho que o cliente vai percorrer e diz com clareza que ainda não
 // é possível reservar.
 export default function BookingPage() {

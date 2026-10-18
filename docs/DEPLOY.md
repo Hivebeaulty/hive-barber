@@ -26,10 +26,10 @@ Ordem recomendada: **GitHub → (CI fecha a Fase 00) → Supabase → Vercel.** 
 >
 > Migrações aplicadas por Claude ficam registradas no Supabase com data/hora como versão (ex.: `20261017...`), enquanto os arquivos do repositório têm numeração `0001`, `0002`. Por isso, **não use `supabase db push` neste projeto sem antes reconciliar**: continue aplicando migrações por Claude (ou pelo SQL Editor) e mantendo o arquivo no repositório.
 
-O banco hoje é **pequeno de propósito**: a migração `0001` só traz funções de data, a extensão da agenda e os privilégios seguros por padrão. As tabelas de negócio chegam na Fase 01. Criar o projeto agora serve para validar a migração e as ACLs no Supabase real.
+O banco hoje é **pequeno de propósito**: a migração `0001` só traz funções de data, a extensão da agenda e os privilégios seguros por padrão. As tabelas de negócio chegam na Fase 02. Criar o projeto agora serve para validar a migração e as ACLs no Supabase real.
 
 1. (Projeto novo) Em supabase.com, crie um projeto, região **South America (São Paulo)** (o atual está em us-east-1: funciona, só tem um pouco mais de latência; a região não pode ser trocada depois). Guarde a **senha do banco** num gerenciador de senhas.
-2. **Authentication → sign-in/providers (ou Settings)**: desligue **"Allow new users to sign up"** (cadastro público). A equipe será criada pelo servidor na Fase 01. Mantenha o provedor **Email** ligado; não ative Phone/SMS.
+2. **Authentication → sign-in/providers (ou Settings)**: desligue **"Allow new users to sign up"** (cadastro público). A equipe será criada pelo servidor na Fase 02. Mantenha o provedor **Email** ligado; não ative Phone/SMS.
 3. Aplicar a migração (escolha uma):
    - **SQL Editor:** abra `supabase/migrations/0001_foundation.sql`, cole inteiro e execute.
    - **CLI do Supabase:** `npx supabase login`, `npx supabase link --project-ref SEU_REF`, `npx supabase db push` (pede a senha do banco). Use a CLI quando houver mais de uma migração.
@@ -55,7 +55,7 @@ O banco hoje é **pequeno de propósito**: a migração `0001` só traz funçõe
 
    Variáveis `NEXT_PUBLIC_*` são embutidas **no build**: ao alterar uma, faça **Redeploy**. Use as chaves do projeto **staging** nos ambientes Preview/Development e as de produção só em Production.
 3. **Deploy.** Na Fase 00 o site funciona mesmo sem as variáveis do Supabase (nenhuma tela as usa ainda), então dá para publicar primeiro e configurar depois.
-4. Conferir o resultado: `/` carrega com a identidade visual; `/agendar` mostra o esqueleto "em construção" (o agendamento **ainda não funciona**); `/admin` responde **404** em produção (de propósito, até existir login na Fase 01).
+4. Conferir o resultado: `/` carrega com a identidade visual; `/agendar` mostra o esqueleto "em construção" (o agendamento **ainda não funciona**); `/admin` responde **404** em produção (de propósito, até existir login na Fase 02).
 5. **Domínio próprio:** Settings → Domains; ajuste o DNS no registrador; atualize `NEXT_PUBLIC_APP_URL` e faça Redeploy.
 
 ### Antes de divulgar o endereço

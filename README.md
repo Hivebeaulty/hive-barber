@@ -1,8 +1,8 @@
 # Bolonha App
 
-Agendamento e gestão da **Barbearia Bolonha**: app público (PWA) para o cliente e painel para o proprietário e os barbeiros. Um negócio, uma instância; sem multiempresa.
+Plataforma de gestão para barbearias com estratégia **white-label**: app público (PWA) para o cliente e painel para o proprietário e os barbeiros. A **Barbearia Bolonha é o piloto**. Modelo atual: uma implantação por barbearia, sobre a mesma base de código; sem multiempresa (ver `docs/WHITE_LABEL.md`).
 
-> **Estado: Fase 00 (fundação).** Existe a estrutura, o design system, a migração base e a lógica de domínio testada. **O agendamento ainda não funciona** e o painel não tem login. Veja `docs/ROADMAP.md`.
+> **Estado: Fase 00 (fundação) validada tecnicamente no CI; Fase 01 (direção, design e preparação white-label) em planejamento.** **O agendamento ainda não funciona**, o painel não tem login e a **interface atual não está aprovada**. Veja `docs/ROADMAP.md` e `docs/VISUAL_AUDIT.md`.
 
 ## Requisitos
 
@@ -18,7 +18,7 @@ npm install                    # gera o package-lock.json: commite-o (o CI o ger
 npm run dev                    # http://localhost:3000
 ```
 
-A home e `/agendar` funcionam **sem** Supabase configurado. As funções de `src/lib/supabase/*` só são chamadas a partir da Fase 01 e falham com erro explícito se faltarem variáveis.
+A home e `/agendar` funcionam **sem** Supabase configurado. As funções de `src/lib/supabase/*` só são chamadas a partir da Fase 02 e falham com erro explícito se faltarem variáveis.
 
 ## Comandos
 
@@ -42,7 +42,7 @@ GitHub, Supabase e Vercel, passo a passo: `docs/DEPLOY.md`. O CI (`.github/workf
 ## Estrutura
 
 ```
-docs/        REFERENCE_AUDIT, ARCHITECTURE, ROADMAP, DESIGN_SYSTEM, PHASE_00_REPORT
+docs/        REFERENCE_AUDIT, ARCHITECTURE, ROADMAP, WHITE_LABEL, VISUAL_AUDIT, DESIGN_SYSTEM, DEPLOY, PHASE_00_REPORT
 src/app/     rotas: (public) site e agendar, (admin)/admin painel
 src/domain/  regras puras testáveis (cancelamento, telefone)
 src/config/  marca, dados do negócio, flags, navegação do painel
@@ -59,5 +59,5 @@ supabase/    migrations/ e tests/ (com stub do Supabase para Postgres puro)
 
 - Nenhuma credencial no repositório (`.env.local` é ignorado).
 - `SUPABASE_SERVICE_ROLE_KEY` nunca recebe o prefixo `NEXT_PUBLIC_` e só é lida em `src/lib/supabase/admin.ts` (`server-only`).
-- A área `/admin` não tem autenticação na Fase 00: em produção (`NODE_ENV=production`) o layout responde 404 até a Fase 01 implementar a guarda de sessão e perfil. Em desenvolvimento ela mostra só a estrutura, sem dados.
+- A área `/admin` não tem autenticação na Fase 00: em produção (`NODE_ENV=production`) o layout responde 404 até a Fase 02 implementar a guarda de sessão e perfil. Em desenvolvimento ela mostra só a estrutura, sem dados.
 - Nenhuma migração deve ser aplicada em produção, e nenhum deploy feito, sem autorização explícita.

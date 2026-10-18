@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { brand } from "../config/brand.ts";
 
 // Manifesto do PWA. A instalação completa (service worker, offline, ícones
-// "maskable" definitivos) é entregue na Fase 07; ver docs/ROADMAP.md.
+// "maskable" definitivos) é entregue na Fase 08; ver docs/ROADMAP.md.
 export default function manifest(): MetadataRoute.Manifest {
   return {
     name: brand.name,

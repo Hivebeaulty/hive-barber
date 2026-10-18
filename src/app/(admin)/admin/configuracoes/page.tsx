@@ -7,7 +7,7 @@ export default function ConfiguracoesPage() {
   return (
     <AdminPlaceholder
       title="Configurações"
-      phase="Fase 01"
+      phase="Fase 02"
       description="Dados da barbearia, horário de funcionamento e regras de cancelamento."
       willHave={[
         "Endereço, telefone e horário de funcionamento",

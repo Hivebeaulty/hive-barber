@@ -17,7 +17,7 @@ export async function createServerSupabase() {
           cookiesToSet.forEach(({ name, value, options }) => cookieStore.set(name, value, options));
         } catch {
           // Chamado de um Server Component (cookies somente leitura). É seguro
-          // ignorar SE o middleware renova a sessão (Fase 01 adiciona o middleware).
+          // ignorar SE o middleware renova a sessão (Fase 02 adiciona o middleware).
         }
       },
     },

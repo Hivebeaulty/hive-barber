@@ -7,7 +7,7 @@ export default function FinanceiroPage() {
   return (
     <AdminPlaceholder
       title="Financeiro"
-      phase="Fase 05"
+      phase="Fase 06"
       description="Receitas, despesas, pagamentos, caixa e comissões, restritos ao proprietário."
       willHave={[
         "Faturamento, recebido, pendente e despesas separados",

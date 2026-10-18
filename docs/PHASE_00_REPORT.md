@@ -1,5 +1,7 @@
 # Relatório da Fase 00
 
+> **Numeração:** este relatório usa a numeração anterior das fases (01 a 07). A numeração vigente está em `ROADMAP.md` (antiga 01→02, 02→03, 03→04, 04→05, 05→06, 06→07, 07→08; a Fase 01 e a Fase 09 são novas). Posições técnicas deste relatório continuam válidas; o status consolidado está no `ROADMAP.md`.
+
 Datas: 12 e 13/10/2026 (entrega inicial); 14/10/2026 (rodada de conclusão).
 
 **Situação (atualizada em 17/10/2026): a Fase 00 está tecnicamente validada no CI, com duas ressalvas** (inspeção visual com as dependências definitivas e o 404 do `/admin` em produção, ver "Ainda pendente" abaixo). Até 14/10 o bloqueio era a rede do ambiente de trabalho; em 17/10 o código foi para o GitHub e o CI (GitHub Actions, com acesso ao registry) executou tudo.

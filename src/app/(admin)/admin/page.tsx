@@ -8,7 +8,7 @@ export default function AdminTodayPage() {
     <>
       <div className="flex flex-wrap items-center gap-3">
         <h1 className="titulo text-3xl text-branco">Hoje</h1>
-        <Pill tone="info">Chega na Fase 02</Pill>
+        <Pill tone="info">Chega na Fase 04</Pill>
       </div>
 
       <div className="mt-6">
