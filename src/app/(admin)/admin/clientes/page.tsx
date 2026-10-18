@@ -7,7 +7,7 @@ export default function ClientesPage() {
   return (
     <AdminPlaceholder
       title="Clientes"
-      phase="Fase 04"
+      phase="Fase 05"
       description="A lista de clientes com histórico de visitas, faltas e atendimentos concluídos."
       willHave={[
         "Busca por nome e telefone",

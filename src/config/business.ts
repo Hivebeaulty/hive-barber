@@ -2,11 +2,11 @@
 //
 // FONTE: capturas de tela do perfil público @barbeariabolonhacanaa no Instagram,
 // enviadas em 12/10/2026. NÃO foram confirmadas com o proprietário.
-// A Fase 01 move estes dados para o banco (tabela de configurações do negócio,
-// editável pelo proprietário) e este arquivo passa a ser apenas o valor inicial.
+// Estes dados passam para o banco (business_settings, editável pelo proprietário)
+// na Fase 02; na Fase 01 viram *seed* da Bolonha (dados, não código). Ver docs/WHITE_LABEL.md.
 //
 // Nenhum serviço, preço ou profissional é listado aqui de propósito: esses dados
-// serão cadastrados pelo proprietário na Fase 01. Até lá a interface mostra
+// serão cadastrados pelo proprietário na Fase 02. Até lá a interface mostra
 // estados vazios, nunca valores inventados.
 
 export type OpeningPeriod = {

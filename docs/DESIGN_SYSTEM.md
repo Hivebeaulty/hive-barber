@@ -1,5 +1,7 @@
 # Design system do Bolonha App
 
+> **Aviso (17/10/2026): a identidade visual atual NÃO está aprovada.** Este documento descreve o que foi construído na Fase 00. A auditoria, os vereditos e a direção proposta estão em `VISUAL_AUDIT.md`; a estratégia de identidade configurável (tokens semânticos, pontos de personalização por barbearia) está em `WHITE_LABEL.md`. Onde divergirem, valem aqueles dois.
+
 Fonte da verdade dos tokens: `src/app/globals.css` (bloco `@theme`). Este documento explica o porquê; se divergir do CSS, vale o CSS e este arquivo deve ser corrigido.
 
 ## 1. Direção
@@ -83,7 +85,7 @@ Regras: **sentence case** sempre; sem caixa-alta decorativa, sem rótulos sobre 
 | Carregando | `Skeleton` com pulso discreto; contêiner com `role="status"`, `aria-busy` e texto para leitor de tela |
 | Vazio | `EmptyState`: diz o que falta e o próximo passo; **nunca** dados de exemplo |
 | Erro | diz o que houve e como seguir; sem pedido de desculpas e sem detalhe técnico ao cliente |
-| Sucesso | confirmação textual com o mesmo verbo da ação (a definir nos formulários da Fase 01) |
+| Sucesso | confirmação textual com o mesmo verbo da ação (a definir nos formulários da Fase 02) |
 | Em construção | `Pill` + flag em `src/config/features.ts`; a interface não finge funcionalidade |
 
 ## 6. Ícones
@@ -105,20 +107,20 @@ Rápido e raro. Transições de 120 ms (interação) e 200 ms (estrutura), curva
 | `Logo` | `components/brand/logo.tsx` | implementado |
 | `SiteHeader`, `SiteFooter`, `OpeningHours` | `components/site/*` | implementado |
 | `AdminShell`, `AdminNav`, `AdminPlaceholder` | `components/admin/*` | implementado (sem login) |
-| `Field`/`Input`/`Select`, `Dialog`, `Toast`, `Avatar`, `DataTable` | — | Fase 01 |
-| `ServicePicker`, `BarberCard`, `SlotPicker`, `DayStrip` | — | Fase 03 |
-| `AgendaGrid` (dia/semana), `StatTile` | — | Fases 02 e 06 |
+| `Field`/`Input`/`Select`, `Dialog`, `Toast`, `Avatar`, `DataTable` | — | Fase 02 |
+| `ServicePicker`, `BarberCard`, `SlotPicker`, `DayStrip` | — | Fase 04 |
+| `AgendaGrid` (dia/semana), `StatTile` | — | Fases 04 e 07 |
 
 ## 9. Uso da logo
 
 - Arquivo atual `public/brand/logo-bolonha-circulo.png` (700×700): **recorte da captura de tela do perfil**, sem redesenho. É **provisório**; trocar pelo original e atualizar `src/config/brand.ts`.
 - Só escala proporcional. Não recriar com texto, não recolorir, não distorcer, não cortar.
 - Sobre fundo claro ou madeira, manter o círculo preto da própria logo (ele já é a base).
-- Os ícones do PWA (`public/icons/*`) são a mesma logo redimensionada; versão "maskable" definitiva na Fase 07.
+- Os ícones do PWA (`public/icons/*`) são a mesma logo redimensionada; versão "maskable" definitiva na Fase 08.
 
 ## 10. Acessibilidade
 
-Contraste AA no mínimo; foco visível; alvos de toque ≥ 44 px (botões `h-11`/`h-14`); navegação por teclado; `lang="pt-BR"`; `prefers-reduced-motion` respeitado; `aria-current="page"` na navegação. Pendente: teste com leitor de tela e auditoria automatizada (Fase 07).
+Contraste AA no mínimo; foco visível; alvos de toque ≥ 44 px (botões `h-11`/`h-14`); navegação por teclado; `lang="pt-BR"`; `prefers-reduced-motion` respeitado; `aria-current="page"` na navegação. Pendente: teste com leitor de tela e auditoria automatizada (Fase 08).
 
 ## 11. Regras de ouro
 

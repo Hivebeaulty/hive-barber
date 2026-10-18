@@ -49,7 +49,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Serviços e equipe: vazios até o proprietário cadastrar (Fase 01). */}
+      {/* Serviços e equipe: vazios até o proprietário cadastrar (Fase 02). */}
       <section className="border-b border-linha">
         <div className="mx-auto grid w-full max-w-6xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-2">
           <div>

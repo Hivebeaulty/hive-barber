@@ -7,7 +7,7 @@ export default function AgendaPage() {
   return (
     <AdminPlaceholder
       title="Agenda"
-      phase="Fase 02"
+      phase="Fase 04"
       description="A agenda diária e semanal, geral e por profissional, com criação, edição e cancelamento de agendamentos."
       willHave={[
         "Visão do dia e da semana",

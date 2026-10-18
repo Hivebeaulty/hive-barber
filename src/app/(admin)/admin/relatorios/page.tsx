@@ -7,7 +7,7 @@ export default function RelatoriosPage() {
   return (
     <AdminPlaceholder
       title="Relatórios"
-      phase="Fase 06"
+      phase="Fase 07"
       description="Indicadores e relatórios financeiros e de operação."
       willHave={[
         "Resultado por período",

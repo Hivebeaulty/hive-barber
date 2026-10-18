@@ -7,7 +7,7 @@ export default function ServicosPage() {
   return (
     <AdminPlaceholder
       title="Serviços"
-      phase="Fase 01"
+      phase="Fase 02"
       description="O catálogo de serviços com categoria, preço e duração fixa."
       willHave={[
         "Categorias, preço e duração",
