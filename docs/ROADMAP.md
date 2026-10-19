@@ -16,7 +16,7 @@ Legenda: ✅ concluída e validada · 🟡 parcial ou em andamento · ⛔ bloque
 | Fase | Nome | Status | Observação |
 | --- | --- | --- | --- |
 | 00 | Fundação técnica e arquitetura | 🟡 | Técnica validada no CI; faltam itens de confirmação (ver abaixo) |
-| 01 | Direção de produto, design e preparação white-label | 🟡 | Planejamento feito (este documento); execução não iniciada |
+| 01 | Direção de produto, design e preparação white-label | 🟡 | D1, D7 e D8 aprovadas (17/10). Dois protótipos visuais (A e B) entregues em 18/10; **aguardam avaliação do proprietário**. Etapa B não iniciada |
 | 02 | Acesso e configuração da barbearia | ⬜ | Depende da 01 (tokens e camada de configuração) |
 | 03 | Motor de agendamento | ⬜ | Depende da decisão de fuso (D2) e da 02 |
 | 04 | Experiência pública e gestão da agenda | ⬜ | Depende da 03 e da aprovação visual |
@@ -26,7 +26,14 @@ Legenda: ✅ concluída e validada · 🟡 parcial ou em andamento · ⛔ bloque
 | 08 | Segurança, experiência e lançamento do piloto | ⬜ | |
 | 09 | Validação comercial e replicação white-label | ⬜ | Só após o piloto |
 
-Bloqueios externos hoje: **logo original em alta resolução**, **moodboard e fotos reais**, **confirmação dos dados da barbearia** (endereço, telefone, horários) e **aprovação da direção visual**. Nenhum bloqueia a parte técnica da Fase 01, mas os três primeiros bloqueiam o *fechamento visual*.
+Bloqueios externos hoje: **logo original em alta resolução**, **moodboard e fotos reais**, **confirmação dos dados da barbearia** (endereço, telefone, horários) e **aprovação visual do proprietário (critério de aceite da Fase 01)**. Nenhum bloqueia a parte técnica da Fase 01, mas os três primeiros bloqueiam o *fechamento visual*.
+
+## Decisões já aprovadas pelo proprietário (17/10/2026)
+
+- **D1:** uma implantação por barbearia (mesmo código e migrações; Supabase, Vercel e domínio independentes). Sem multiempresa completa agora.
+- **D7:** "Bolonha App" é o nome do piloto, não necessariamente o comercial. O nome do estabelecimento fica fora da arquitetura; identificador interno neutro `barbershop-platform` / `shop` até a marca ser definida.
+- **D8:** várias unidades por proprietário não são requisito da primeira versão; a expansão futura fica preservada na modelagem.
+- **Regras desta etapa:** não alterar o Áurea, não criar projeto Supabase novo, não publicar mudança funcional, sem dependência de SMS ou WhatsApp.
 
 ## Fase 00 — Fundação técnica e arquitetura 🟡
 
@@ -52,8 +59,8 @@ Aproveita o que existe; **não recomeça o projeto**. Duas etapas, com um portã
 **Etapa A — Evidência e direção (sem implementar telas novas)**
 1. Pipeline de evidência visual no CI: Playwright (Chromium e WebKit) tira capturas de `/`, `/agendar` e `/admin` (build local) em 390×844 e 1280×800 e publica numa branch de evidências, que a equipe consegue abrir. Não substitui aparelho real; substitui "ninguém viu".
 2. Coletar insumos: moodboard e referências do proprietário, fotos reais (fachada, salão, barbeiros), logo em alta resolução, dados confirmados.
-3. Dois *spikes* visuais curtos da home (Direção A "Ripado" e Direção B "Comanda", ver `VISUAL_AUDIT.md`) em dispositivos reais.
-4. **Portão:** o proprietário escolhe a direção. Sem aprovação, a Etapa B não começa.
+3. Dois protótipos visuais comparáveis (Direção A "Ripado" e Direção B "Comanda", ver `VISUAL_AUDIT.md`, seção 7): home pública, fluxo de agendamento em 5 passos e a tela "Hoje" do painel, em celular e desktop, com o mesmo conteúdo. **Entregues em 18/10/2026; aguardam a avaliação do proprietário.** Conferidos só em Chromium com fontes de substituição; falta ver em aparelho real.
+4. **Portão:** o proprietário escolhe a direção (A, B ou uma combinação, por exemplo a base tipográfica da B com elementos de identidade da A). Sem aprovação por escrito, a Etapa B não começa e nenhuma interface nova é implementada.
 
 **Etapa B — Preparação white-label e implementação do sistema visual aprovado**
 1. Tokens **semânticos** (`superficie`, `texto`, `acao`, `textura`…) no lugar dos nomes presos à paleta (`carvao`, `azul`…); promover os hex soltos (3 arquivos) a tokens.
@@ -63,7 +70,7 @@ Aproveita o que existe; **não recomeça o projeto**. Duas etapas, com um portã
 5. Home, `/agendar` (esqueleto) e casca do painel refeitos na direção aprovada, com estados vazios desenhados.
 6. Validação: CI verde + capturas reais aprovadas + checagem automática de contraste de qualquer paleta de barbearia (AA).
 
-**Aceite:** direção aprovada por escrito; nenhum nome, endereço, cor ou texto da Bolonha em componentes (só em *seed* e ativos); trocar a identidade padrão por outra não exige editar componentes (demonstrado com uma segunda identidade de teste, fictícia e rotulada); capturas de navegador real anexadas ao relatório; D1 a D8 decididas.
+**Aceite:** **aprovação visual explícita do proprietário, por escrito, sobre a direção e sobre a implementação (critério de aceite desta fase; nenhuma tela é considerada aprovada por abrir, por passar nos testes ou por existir um protótipo)**;  nenhum nome, endereço, cor ou texto da Bolonha em componentes (só em *seed* e ativos); trocar a identidade padrão por outra não exige editar componentes (demonstrado com uma segunda identidade de teste, fictícia e rotulada); capturas de navegador real anexadas ao relatório; D1 a D8 decididas.
 
 ## Fase 02 — Acesso e configuração da barbearia ⬜
 

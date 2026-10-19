@@ -105,3 +105,24 @@ Nenhuma tela está aprovada por abrir ou por passar nos testes. Plano:
 2. **Aparelhos reais:** o proprietário abre o endereço de teste em um iPhone e em um Android e envia capturas de tela (ou gravação). Sem isso, o texto "inspecionado em aparelho" não entra em relatório algum.
 3. **Insumos que faltam:** moodboard e referências que o proprietário aprova (3 a 5 sites ou imagens), fotos reais, logo em alta resolução (PNG/SVG).
 4. **Portão:** o proprietário escolhe a direção (A, B ou ajuste) por escrito antes de qualquer tela nova.
+
+## 7. Protótipos comparáveis A e B (18/10/2026)
+
+Estado: **entregues para avaliação; nenhuma direção está aprovada ou escolhida.** São protótipos de interface clicáveis (canvas de design privado, fora do repositório e da aplicação), não imagens conceituais.
+
+| | A · Ripado | B · Comanda |
+| --- | --- | --- |
+| Tipografia | Archivo condensada pesada nos títulos, Archivo no corpo | Barlow Condensed gigante nos títulos, Barlow no corpo, IBM Plex Mono em números e rótulos |
+| Material | Ripas de madeira como máscara da foto, faixa divisória e barra de progresso | Papel de comanda com borda picotada, pontilhado e fonte monoespaçada; madeira só em faixas finas |
+| Abertura da home | Foto real do salão vista através de ripas, uma animação única | Só tipografia, com uma comanda do próximo horário livre |
+| Serviços | Tabela de preços com pontilhado, em linhas sobre fundo escuro | Folha de comanda clara sobre fundo escuro |
+| Confirmação | Bilhete claro com picote | Comanda completa com código de barras ilustrativo |
+| Painel "Hoje" | Escuro, sem textura, mesma tipografia | Agenda impressa em papel claro, mesma estrutura |
+
+**Mesmo em ambas:** home (desktop 1280 e celular 390), agendamento em 5 passos (390 × 844), painel "Hoje" (desktop e celular), mesmo texto, mesmos dados de exemplo, mesma regra de azul (só ação e horário livre), mesmos tokens de base (`#0d0e10`, `#181b1f`, `#2f5bff` e demais da seção 3).
+
+**Dados:** logo (recorte de captura de tela) e fotos (recortes dos stories do Instagram) são **provisórios**; endereço, telefone e horários vêm da bio do Instagram e **aguardam confirmação**; serviços, preços, nomes de profissionais e clientes, e horários livres são **fictícios** e rotulados. Fotos da equipe não existem e aparecem como pendência. Nenhum elemento de marca foi inventado.
+
+**Limites:** layout conferido em Chromium com fontes de substituição (as fontes finais vêm do Google Fonts e o ambiente não as baixa); proporções de títulos podem diferir um pouco. Nada foi testado em Safari, em aparelho real nem com leitor de tela. Contraste: 26 pares de cor usados nos protótipos foram calculados (fórmula WCAG): 2 estavam abaixo de 4,5:1 (rótulo claro sobre azul e texto de exemplo de campo) e foram corrigidos; horários indisponíveis (riscados) ficam abaixo de 4,5:1 de propósito, por serem desativados. Isso não substitui o `scripts/contrast.mjs` nem teste com usuários.
+
+**Inclinação declarada pelo proprietário (não decidida):** avaliar uma base tipográfica inspirada na Comanda com elementos de identidade extraídos do Ripado (máscara e faixa de ripas, madeira como material). O portão da Fase 01 (aprovação visual por escrito) continua valendo para qualquer combinação.

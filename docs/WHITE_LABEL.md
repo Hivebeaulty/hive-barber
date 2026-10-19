@@ -125,17 +125,17 @@ O **seed** é um arquivo de dados (JSON/SQL) por barbearia, fora do núcleo do p
 
 | # | Decisão | Recomendação | Quando |
 | --- | --- | --- | --- |
-| D1 | Modelo: instância por barbearia, sem multiempresa | Aprovar a seção 2 | Já |
+| D1 | Modelo: instância por barbearia, sem multiempresa | **Aprovado pelo proprietário em 17/10/2026.** Uma implantação por barbearia: mesmo código e mesmas migrações, projetos Supabase e Vercel independentes e domínio próprio. Multiempresa completa **não** será implementada agora (critérios para reavaliar na seção 5) | Decidido |
 | D2 | Fuso por implantação (migração nova) | Aprovar seção 4.1 | Antes da Fase 03 (ideal: Fase 01) |
 | D3 | Padrão de versionamento de migrações (CLI do Supabase) | Aprovar seção 4.4 | Fase 01 |
 | D4 | Identidade no banco/Storage, padrões neutros no código | Aprovar seção 3.1 | Fase 01 |
 | D5 | Papéis por implantação; sem superadministrador dentro do app | Aprovar | Fase 02 |
 | D6 | Escopo Brasil (pt-BR, BRL em centavos, telefone brasileiro) | Declarar | Fase 01 |
-| D7 | **Nome do produto**: "Bolonha App" é o nome do piloto; o produto precisa de nome neutro (o repositório e os projetos já usam "Hive Barber"). Confirmar nome, `package.json`, textos e pacote padrão "Sua Barbearia" | Escolher o nome do produto | Fase 01 |
-| D8 | Multiunidade (várias unidades de um mesmo dono) é requisito? | Perguntar ao proprietário; padrão: não | Fase 01 |
+| D7 | **Nome do produto e identificador interno.** "Bolonha App" é o nome do piloto, não necessariamente o nome comercial definitivo. | **Aprovado em 17/10/2026**, na parte de arquitetura: o nome do estabelecimento sai da arquitetura. Até a marca comercial ser definida, o identificador interno neutro é `barbershop-platform` (pacote, documentação técnica) e `shop` (entidade e configuração no código, via `getShop()`). Não é marca e não aparece para clientes. **Pendente:** o nome comercial. Aplicação no código: Fase 01, Etapa B | Identificador: Fase 01. Nome comercial: antes da Fase 09 |
+| D8 | Multiunidade (várias unidades de um mesmo dono) é requisito? | **Decidido em 17/10/2026: não é requisito da primeira versão.** A possibilidade de expansão futura é preservada pelas regras de modelagem da seção 4.3 (UUIDs, restrições nomeadas, políticas via funções auxiliares); nada é construído para isso agora | Decidido |
 | D9 | LGPD: cada barbearia é a controladora dos dados dos seus clientes; o operador do produto precisa de termos e de um tratamento de operador | Revisão jurídica antes do lançamento | Fase 08 |
 | D10 | Modelo de custo por implantação (Vercel e Supabase pagos) | Definir preço e plano | Antes da Fase 09 |
 
 ## 8. O que muda no código agora, no mínimo
 
-Nada nesta etapa além de documentação e da renumeração de fases em comentários e rótulos. As mudanças estruturais estão na Fase 01, Etapa B (tokens semânticos, `getShop()`, *seed*, fuso, migrações).
+Nada nesta etapa além de documentação e da renumeração de fases em comentários e rótulos (PR #1, unido à `main`). As mudanças estruturais estão na Fase 01, Etapa B (tokens semânticos, `getShop()`, identificador neutro, *seed*, fuso, migrações), e **só começam depois da aprovação visual por escrito**.
